@@ -1,0 +1,77 @@
+	<!-- Decimal and Binary Convertor -->
+<!DOCTYPE html>
+<html>
+	<head>
+
+	</head>
+	
+	<body>														
+	<h1> Welcome to Binary and Decimal Convertor. </h1>
+	<h3>programmed in JavaScript by Nora Talaat </h3>
+	</br>
+		
+		
+	<!--First in html, i am creating inputs to get values directly from the user,
+	by creating 2 inputs - first input to get a decimal value - second input to get a binary value.-->
+		
+	<h2> From Decimal to Binary </h2>	
+	<input id= "deci"  oninput="myInput1()">
+
+	<!-- 'oninput="myInput1()"' means that a javascript function "myInput1()" is going to be excuted when the input field is changed -->
+										
+	<p id="decTobin"></p>
+
+	<!-- create an empty paragraph to show the result in it. -->
+			
+	</br>
+			
+	<h2> From Binary to Decimal </h2>
+	<input id="bina" oninput="myInput2()">
+	<p id="binTodec"></p>
+
+	<!--doing the same steps as above for the second input-->
+	</br>
+	
+	
+<script>
+
+	/*	  now the intersting part in javascript
+	right now we have 2 values from the inputs "deci" and "bina" 			
+	we need to use them in a function that converts Decimal "deci" to Binary,
+	and another function that converts binary "bina" numbers to decimal. */
+											
+
+	// first : from Decimal to Binary 
+	function myInput1(){
+	var input1 = document.getElementById("deci").value;
+	// the value that the user inputs is now saved in the variable -input1- , now we can use it in our function.
+	function myDtoB(x) {
+	 return(x >>> 0).toString(2);
+	}
+	//the function above is used to convert any decimal number -x- into a binary. how does it work?:-
+	// if the inputted number is a negative number ,,The toString() function takes the decimal, converts it to binary and adds a "-" sign.
+	// that is why we use a zero fill right shift (x >>> 0) to convert its operand to a 32 signed bit integer in two complements format.
+	// the number 2 in "toString(2)" is the radix  2 >> for binary , 10 >> for decimal , 16 >> for hexadecimal.
+		
+	document.getElementById("decTobin").innerHTML = myDtoB(input1);
+	}
+	//now we need to use the -input1- variable -the value that the user has inputted- in our function.
+	// and show the results in the empty paragraph with the id "decTobin"
+		
+													
+	// Second : from Binary to Decimal 
+		
+	function myInput2(){
+	var input2 = document.getElementById("bina").value;
+	function myBtoD(x){
+	return  parseInt(x ,2).toString(10);
+	}
+	//parseInt(string,radix).. we have a binary => 2 based number,, we want to convert it to a 10 based number.
+	document.getElementById("binTodec").innerHTML = myBtoD(input2);
+	}
+		
+</script>
+
+
+	<body>
+</html>
